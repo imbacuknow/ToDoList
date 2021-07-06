@@ -6,5 +6,5 @@ import lombok.Data;
 public class ToDoModel {
 
     private Long id;
-    private String toDo;
+    private String title;
 }

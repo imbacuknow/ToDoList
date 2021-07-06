@@ -25,22 +25,22 @@ public class ToDoListApplication {
 			LocalDateTime ctd4 = LocalDateTime.of(2021, 1, 4, 11, 43, 12);
 
 			ToDo toDo1 = new ToDo();
-			toDo1.setToDo("Hello World!");
+			toDo1.setTitle("Hello World!");
 			toDo1.setCreatedDate(ctd);
 			toDoRepo.save(toDo1);
 
 			ToDo toDo2 = new ToDo();
-			toDo2.setToDo("I'm bac u know me, huh");
+			toDo2.setTitle("I'm bac u know me, huh");
 			toDo2.setCreatedDate(ctd2);
 			toDoRepo.save(toDo2);
 
 			ToDo toDo3 = new ToDo();
-			toDo3.setToDo("do a kickflip");
+			toDo3.setTitle("do a kickflip");
 			toDo3.setCreatedDate(ctd3);
 			toDoRepo.save(toDo3);
 
 			ToDo toDo4 = new ToDo();
-			toDo4.setToDo("do a heelflip");
+			toDo4.setTitle("do a heelflip");
 			toDo4.setCreatedDate(ctd4);
 			toDoRepo.save(toDo4);
 		};

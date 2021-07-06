@@ -15,8 +15,8 @@ public class ToDo extends BaseEntity {
     private Long id;
 
     @Column(name = "ToDo", nullable = false)
-    private String toDo;
+    private String title;
 
     @Column(name = "ToDoStatus")
-    private Boolean toDoStatus = AppFlagStatus.IS_COMPLETED_FLAG.N;
+    private Boolean isComplete = AppFlagStatus.IS_COMPLETED_FLAG.N;
 }

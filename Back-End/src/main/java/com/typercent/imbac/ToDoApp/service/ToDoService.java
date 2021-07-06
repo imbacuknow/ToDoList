@@ -7,7 +7,6 @@ import com.typercent.imbac.ToDoApp.model.ToDoModel;
 import com.typercent.imbac.ToDoApp.repository.ToDoRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,7 +24,7 @@ public class ToDoService {
         log.info("createNewToDo: {}", request);
         ToDo toDo = new ToDo();
         toDo.setCreatedDate(LocalDateTime.now());
-        toDo.setToDo(request.getToDo());
+        toDo.setTitle(request.getTitle());
         return this.toDoRepo.save(toDo);
     }
 
@@ -50,7 +49,7 @@ public class ToDoService {
         log.info("updateNewToDo: {}", request);
         ToDo toDo = this.toDoRepo.findById(request.getId())
                 .orElseThrow(() -> new DataNotFoundException("Can't update 'Cause this id " + request.getId() + " does not exist in Todo"));
-        toDo.setToDo(request.getToDo());
+        toDo.setTitle(request.getTitle());
         toDo.setUpdateddDate(LocalDateTime.now());
         return this.toDoRepo.save(toDo);
     }
@@ -59,7 +58,7 @@ public class ToDoService {
         log.info("updateNewToDo: {}", request);
         ToDo toDo = this.toDoRepo.findById(request.getId())
                 .orElseThrow(() -> new DataNotFoundException("Can't update 'Cause this id " + request.getId() + " does not exist in Todo"));
-        toDo.setToDoStatus(AppFlagStatus.IS_COMPLETED_FLAG.Y);
+        toDo.setIsComplete(AppFlagStatus.IS_COMPLETED_FLAG.Y);
         toDo.setUpdateddDate(LocalDateTime.now());
         return this.toDoRepo.save(toDo);
     }
