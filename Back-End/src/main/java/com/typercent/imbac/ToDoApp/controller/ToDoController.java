@@ -4,25 +4,27 @@ import com.typercent.imbac.ToDoApp.entity.ToDo;
 import com.typercent.imbac.ToDoApp.model.ToDoModel;
 import com.typercent.imbac.ToDoApp.service.ToDoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class ToDoController {
 
     private final ToDoService toDoService;
 
-    @GetMapping("/retrieveUncompleteToDo")
-    public ResponseEntity<List<ToDo>> getUncompleteToDo() {
-        return ResponseEntity.ok(this.toDoService.retrieveToDoList());
-    }
+//    @GetMapping("/retrieveUncompleteToDo")
+//    public ResponseEntity<List<ToDo>> getUncompleteToDo() {
+//        return ResponseEntity.ok(this.toDoService.retrieveUncompleteToDoList());
+//    }
+//
+//    @GetMapping("/retrieveCompleteToDo")
+//    public ResponseEntity<List<ToDo>> getCompleteTodo() {
+//        return ResponseEntity.ok((this.toDoService.retrieveCompleteToDoList()));
+//    }
 
     @GetMapping("/retrieveAllToDo")
     public ResponseEntity<List<ToDo>> getAllToDo() {
@@ -30,17 +32,21 @@ public class ToDoController {
     }
 
     @PostMapping("/createNewToDo")
-    public void createNewToDo(@RequestBody ToDoModel request) {
-        this.toDoService.createNewToDo(request);
+    public ResponseEntity<ToDo> createNewToDo(@RequestBody ToDoModel request) {
+        ToDo toDo = this.toDoService.createNewToDo(request);
+        return new ResponseEntity<>(toDo, HttpStatus.CREATED);
     }
 
     @PutMapping("/updateToDo")
-    public void updateToDo(@RequestBody ToDoModel request) {
-        this.toDoService.updateToDo(request);
+    public ResponseEntity<ToDo> updateToDo(@RequestBody ToDoModel request) {
+        ToDo toDo = this.toDoService.updateToDo(request);
+//        return ResponseEntity.created(null).build();
+        return new ResponseEntity<>(toDo, HttpStatus.CREATED);
     }
 
     @PutMapping("/updateToDoStatus")
-    public void updateToDoStatus(@RequestBody ToDoModel request) {
-        this.toDoService.updateToDoStatus(request);
+    public ResponseEntity<ToDo> updateToDoStatus(@RequestBody ToDoModel request) {
+        ToDo toDo = this.toDoService.updateToDoStatus(request);
+        return new ResponseEntity<>(toDo, HttpStatus.CREATED);
     }
 }

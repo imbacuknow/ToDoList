@@ -4,12 +4,15 @@ import com.typercent.imbac.ToDoApp.core.AppFlagStatus;
 import com.typercent.imbac.ToDoApp.core.BaseEntity;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 @Data
 public class ToDo extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
 
     @Column(name = "ToDo", nullable = false)
     private String toDo;

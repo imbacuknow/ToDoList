@@ -11,9 +11,10 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class ErrorExceptionResponse {
+
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private LocalDateTime timestamp;
     private int status;
     private String errorCode;
     private String error;

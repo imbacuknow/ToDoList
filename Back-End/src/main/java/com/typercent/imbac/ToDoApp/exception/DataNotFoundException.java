@@ -11,7 +11,4 @@ public class DataNotFoundException extends RuntimeException {
         super(msg);
     }
 
-//    public DataNotFoundException(String msg, String error) {
-//        super(msg);
-//    }
 }

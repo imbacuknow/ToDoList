@@ -7,5 +7,4 @@ public class ToDoModel {
 
     private Long id;
     private String toDo;
-    private Boolean toDoStatus;
 }
