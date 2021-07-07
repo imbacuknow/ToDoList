@@ -1,4 +1,4 @@
-package com.typercent.imbac.Todo.entity.core;
+package com.typercent.imbac.Todo.core;
 
 public class AppFlag {
 

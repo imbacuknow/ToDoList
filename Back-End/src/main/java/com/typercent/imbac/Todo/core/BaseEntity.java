@@ -1,4 +1,4 @@
-package com.typercent.imbac.Todo.entity.core;
+package com.typercent.imbac.Todo.core;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
