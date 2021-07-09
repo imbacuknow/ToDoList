@@ -1,0 +1,51 @@
+<div class="wrapper">
+    <h1>Todos</h1>
+    <form [formGroup]="inputForm">
+        <div class="todo--input">
+            <input formControlName="title" type="text" placeholder="What's the Plan for Today?">
+            <button [disabled]="inputForm.invalid" (click)="addTodo()">
+                <fa-icon [icon]="faPlus"></fa-icon>
+            </button>
+        </div>
+        <div style="height: 25px">
+            <span style="padding: 10px; color: red;" *ngIf="inputForm.controls.title.hasError('required') && inputForm.controls.title.touched">Please input something you want to do.</span>
+            <span style="padding: 10px; color: red;" *ngIf="inputForm.controls.title.hasError('maxlength')">required less than equal 120 letters.</span>
+        </div>
+    </form>
+    <!--  -->
+    <div style="height: 380px;">
+        <!-- Todo List Uncompleted -->
+        <ul *ngIf="!completeBot" class="todo--list" [style]="todos.length > 0 ? 'overflow-y: scroll;' : ''">
+            <li *ngFor="let todo of todos; let i = index">
+                <p>{{ todo.title }} 
+                <fa-icon (click)="editTodoStatus(todo.id, i)" id="fa__one" [icon]="faCheckSquare"></fa-icon>
+                <fa-icon (click)="deleteTodo(todo.id, i)" id="fa__two" [icon]="faTashAlt"></fa-icon>
+                </p>
+            </li>
+            <div *ngIf="todos.length==0" class="todo--free">
+                <p class="status free">
+                    <img src="https://nourabusoud.github.io/vue-todo-list/images/beer_celebration.svg" alt="celebration">
+                        Time to chill!  You have no todos.
+                </p>
+            </div>
+        </ul>
+        <!-- Todo List Completed -->
+        <ul *ngIf="completeBot" class="todo--list" [style]="todosComplete.length > 0 ? 'overflow-y: scroll;' : ''" >
+            <li class="uncomplete" *ngFor="let todo of todosComplete; let i = index">{{ todo.title }} 
+                <fa-icon (click)="deleteTodoComplete(todo.id, i)" id="fa__two" [icon]="faTashAlt"></fa-icon>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="footer">
+        <button (click)="showTodoCompleted()" id="completed__bot" *ngIf="!completeBot">Completed</button>
+        <button (click)="showTodoCompleted()" id="uncomplete__bot" *ngIf="completeBot">Uncomplete</button>
+        <button (click)="removeTodoAll()" id="clear__bot" *ngIf="completeBot">Clear</button>
+    </div>
+</div>
+
+<!-- backup -->
+<!-- <li *ngFor="let todo of todos; let i = index">{{ todo.title }} 
+            <fa-icon (click)="editTodoStatus(todo.id, i)" id="fa__one" [icon]="faCheckSquare"></fa-icon>
+            <fa-icon (click)="deleteTodo(todo.id, i)" id="fa__two" [icon]="faTashAlt"></fa-icon>
+        </li> -->
