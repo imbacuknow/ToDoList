@@ -10,4 +10,7 @@ import java.util.List;
 public interface TodoRepo extends JpaRepository<Todo, Long> {
 
     List<Todo> findByIsComplete(Boolean b);
+
+//    void deleteByIsComplete(Boolean b);
+    void deleteByIsComplete(Boolean b);
 }
